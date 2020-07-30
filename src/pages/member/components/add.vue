@@ -64,7 +64,7 @@ export default {
     ...mapActions({
       // requestMenuList: "menu/requestList",
       requestMemberList: "member/requestList",
-       requestMemberList:"Member/requestList",
+      //  requestMemberList:"Member/requestList",
           // requestTotal:"Member/requestTotal"
     }),
     //清空
@@ -84,25 +84,7 @@ export default {
         this.empty();
       }
     },
-    add() {
-     
-   //发起添加请求
-      // requestMemberAdd(this.form).then((res) => {
-      //   if (res.data.code == 200) {
-      //     successAlert(res.data.msg);
-      //     //清空
-      //     this.empty();
-      //     //弹框消失
-      //     this.cancel();
-      //     //重新获取角色列表数据
-      //     this.requestMemberList();
-      //     this.requestTotal()
-          
-      //   } else {
-      //     warningAlert(res.data.msg);
-      //   }
-      // });
-    },
+
 
     //获取详情
     //ajax

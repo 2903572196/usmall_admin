@@ -252,69 +252,6 @@ export const requestSpecDelete = params => {
         data: qs.stringify(params)
     })
 }
-
-
-// --------------------------------------------------------
-//商品添加
-// export const requestGoodsAdd = (params) => {
-//     let formData=new FormData()
-//     for(let i in params){
-//         formData.append(i,params[i])
-//     }
-//     return axios({
-//         url: baseUrl + "/api/goodsadd",
-//         method: "post",
-//         data: formData
-//     })
-// }
-
-// //商品总数
-// export const requestGoodsCount=()=>{
-//     return axios({
-//         url:baseUrl+"/api/goodscount",
-//         method:"get"
-//     })
-// }
-// //商品列表
-// export const requestGoodsList = (params) => {
-//     return axios({
-//         url: baseUrl + "/api/goodslist",
-//         method: "get",
-//         params: params
-//     })
-// }
-
-// //商品某一个条数据
-// export const requestGoodsDetail = params => {
-//     return axios({
-//         url: baseUrl + "/api/goodsinfo",
-//         method: "get",
-//         params
-//     })
-// }
-// //商品修改
-// export const requestGoodsUpdate = params => {
-//     let formData=new FormData()
-//     for(let i in params){
-//         formData.append(i,params[i])
-//     }
-//     return axios({
-//         url: baseUrl + "/api/goodsedit",
-//         method: "post",
-//         data: formData
-//     })
-// }
-
-// //商品删除
-// export const requestGoodsDelete = params => {
-//     return axios({
-//         url: baseUrl + "/api/goodsdelete",
-//         method: "post",
-//         data: qs.stringify(params)
-//     })
-// }
-
-
 //商品添加
 export const requestGoodsAdd = (params) => {
     let formData=new FormData()
@@ -402,4 +339,113 @@ export const requestMemberUpdate = (params) => axios({
     method: "post",
     data: qs.stringify(params)
 })
+
+// -------------------------------轮播图----------------------------------
+//轮播图添加
+export const requestBannerAdd = (params) => {
+    let formData=new FormData()
+    for(let i in params){
+        formData.append(i,params[i])
+    }
+    return axios({
+        url: baseUrl + "/api/banneradd",
+        method: "post",
+        data: formData
+    })
+}
+//轮播图列表
+export const requestBannerList = (params) => {
+    return axios({
+        url: baseUrl + "/api/bannerlist",
+        method: "get",
+        params: params
+    })
+}
+
+//轮播图某一个条数据
+export const requestBannerDetail = params => {
+    return axios({
+        url: baseUrl + "/api/bannerinfo",
+        method: "get",
+        params
+    })
+}
+//轮播图修改
+export const requestBannerUpdate = params => {
+    let formData=new FormData()
+    for(let i in params){
+        formData.append(i,params[i])
+    }
+    return axios({
+        url: baseUrl + "/api/banneredit",
+        method: "post",
+        data: formData
+    })
+}
+
+//轮播图删除
+export const requestBannerDelete = params => {
+    return axios({
+        url: baseUrl + "/api/bannerdelete",
+        method: "post",
+        data: qs.stringify(params)
+    })
+}
+
+
+// -------------------------活动-----------------------------
+//活动添加
+export const requestSeckillAdd = (params) => {
+    // let formData=new FormData()
+    // for(let i in params){
+    //     formData.append(i,params[i])
+    // }
+    return axios({
+        url: baseUrl + "/api/seckadd",
+        method: "post",
+    params:params
+    })
+}
+
+
+//活动列表
+export const requestSeckillList = (params) => {
+    return axios({
+        url: baseUrl + "/api/secklist",
+        method: "get",
+        params: params
+    })
+}
+
+//活动某一个条数据
+export const requestSeckillDetail = params => {
+    return axios({
+        url: baseUrl + "/api/seckinfo",
+        method: "get",
+        params
+    })
+}
+//活动修改
+export const requestSeckillUpdate = params => {
+    // let formData=new FormData()
+    // for(let i in params){
+    //     formData.append(i,params[i])
+    // }
+    return axios({
+        url: baseUrl + "/api/seckedit",
+        method: "post",
+        params:params
+    })
+}
+
+//活动删除
+export const requestSeckillDelete = params => {
+    return axios({
+        url: baseUrl + "/api/seckdelete",
+        method: "post",
+        data: qs.stringify(params)
+    })
+}
+
+
 

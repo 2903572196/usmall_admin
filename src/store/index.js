@@ -11,6 +11,7 @@ import cate from "./modules/cate"
 import spec from "./modules/spec"
 import goods from "./modules/goods"
 import member from "./modules/member"
+import banner from "./modules/banner"
 export default new Vuex.Store({
     state,
     mutations,
@@ -23,6 +24,7 @@ export default new Vuex.Store({
         cate,
         spec,
         goods,
-        member
+        member,
+        banner
     }
 })

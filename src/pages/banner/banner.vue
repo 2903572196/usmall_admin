@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       info: {
-        show: true,
+        show: false,
         title: "添加轮播图",
         isAdd: true,
       },

@@ -2,26 +2,12 @@
   <div>
     <el-table :data="list" style="width: 100%">
       <el-table-column prop="id" label="编号" width="80"></el-table-column>
-      <el-table-column prop="goodsname" label="轮播图标题" width="90"></el-table-column>
+      <el-table-column prop="title" label="轮播图标题" width="150"></el-table-column>
       <el-table-column label="图片" width="180">
       <template slot-scope="scope">
           <img :src="$imgPre+scope.row.img" alt="">
         </template>
       </el-table-column>
-      <!-- <el-table-column label="是否新品">
-        <template slot-scope="scope">
-         <el-button v-if="scope.row.isnew==1" type="primary">是</el-button>
-          <el-button v-else type="info">否</el-button>
-        </template>
-      </el-table-column> -->
-
-      <!-- <el-table-column label="是否热卖">
-        <template slot-scope="scope">
-       <el-button v-if="scope.row.ishot==1" type="primary">是</el-button>
-          <el-button v-else type="info">否</el-button>
-        </template>
-      </el-table-column> -->
-
       <el-table-column label="状态">
         <template slot-scope="scope">
           <el-button v-if="scope.row.status==1" type="primary">启用</el-button>
@@ -37,21 +23,20 @@
         </template>
       </el-table-column>
     </el-table>
-    <!-- 分页 -->
-    <el-pagination background layout="prev, pager, next" @current-change="cPage" :page-size="size" :total="total"></el-pagination>
+
   </div>
 </template>
   <script>
 import { mapGetters, mapActions } from "vuex";
-import { requestGoodsDelete } from "../../../util/request";
+import { requestBannerDelete } from "../../../util/request";
 import { successAlert, warningAlert } from "../../../util/alert";
 export default {
   components: {},
   computed: {
     ...mapGetters({
-      list: "goods/list",
-      total: "goods/total",
-      size: "goods/size",
+      list: "banner/list",
+      total: "banner/total",
+      size: "banner/size",
     }),
   },
   data() {
@@ -59,9 +44,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      requestList: "goods/requestList",
-      requestTotal: "goods/requestTotal",
-        changePage: "goods/changePage",
+      requestList: "banner/requestList",
+      requestTotal: "banner/requestTotal",
+        // changePage: "banner/changePage",
     }),
     edit(id) {
       this.$emit("edit", id);
@@ -69,23 +54,18 @@ export default {
     //删除
     del(id) {
       console.log(id)
-      requestGoodsDelete({ id: id }).then((res) => {
+      requestBannerDelete({ id: id }).then((res) => {
         if (res.data.code == 200) {
           successAlert("删除成功");
           this.requestList();
-             this.requestTotal()
+            //  this.requestTotal()
         } else {
           warningAlert(res.data.msg);
         }
       });
     },
-    cPage(a){
-         this.changePage(a)
-           this.requestList();
-    }
   },
   mounted() {
-    // this.requestTotal();
     this.requestList();
   },
 };
