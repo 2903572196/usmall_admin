@@ -2,7 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 Vue.use(Vuex)
 
-import {state,mutations,getters} from "./mutations"
+import { state, mutations, getters } from "./mutations"
 import actions from "./actions"
 import menu from "./modules/menu"  //引入menu
 import role from "./modules/role"
@@ -12,12 +12,13 @@ import spec from "./modules/spec"
 import goods from "./modules/goods"
 import member from "./modules/member"
 import banner from "./modules/banner"
+import seckill from "./modules/seckill"
 export default new Vuex.Store({
     state,
     mutations,
     getters,
     actions,
-    modules:{
+    modules: {
         menu,
         role,
         manage,
@@ -25,6 +26,7 @@ export default new Vuex.Store({
         spec,
         goods,
         member,
-        banner
+        banner,
+        seckill
     }
 })

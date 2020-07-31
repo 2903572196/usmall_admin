@@ -53,7 +53,7 @@
         </el-form-item>
 
         <el-form-item label="商品规格" label-width="80px">
-          <el-select v-model="form.specsid" @change="changeSpecsId">
+          <el-select v-model="form.specsid" @change="changeSpecsId()">
             <el-option label="请选择" value disabled></el-option>
             <!-- 动态数据 -->
             <el-option
@@ -105,13 +105,17 @@ import { mapGetters, mapActions } from "vuex";
 import {
   requestGoodsAdd,
   requestGoodsDetail,
-  requestGoodsUpdate, //更新
+  requestGoodsUpdate,
+  requestSpecList
+  //更新
 } from "../../../util/request";
 import { successAlert, warningAlert } from "../../../util/alert";
 import E from "wangeditor"; //引入
 export default {
   props: ["info"],
-  components: {},
+  components: {
+    
+  },
   computed: {
     ...mapGetters({
       //分类的一级列表
@@ -189,8 +193,8 @@ export default {
       let index = this.specList.findIndex(
         (item) => item.id == this.form.specsid
       );
-
-      this.attrsArr =JSON.parse(this.specList[index].attrs) ;
+  console.log(this.specList)
+      this.attrsArr =JSON.parse(this.specList[index].attrs)
       if(!bool){
         this.form.specsattr = [];
       }

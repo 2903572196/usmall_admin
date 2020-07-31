@@ -14,8 +14,11 @@
 import {requestLogin} from "../../util/request"
 import {successAlert,warningAlert} from "../../util/alert"
 import {mapActions} from "vuex"
+
 export default {
-  components: {},
+  components: {
+ 
+  },
   data() {
     return {
       user:{
@@ -24,15 +27,12 @@ export default {
       }
     };
   },
+
   methods: {
     ...mapActions({
 "changeUser":"changeUser"
     }),
       login(){
-
-          // this.$router.push("/")
-
-          
           requestLogin(this.user).then(res=>{
             if(res.data.code==200){
             successAlert("登录成功")
@@ -47,8 +47,12 @@ export default {
           })
       }
   },
-  mounted() {},
+  mounted() {
+ 
+  },
 };
+
+
 </script>
 <style scoped>
 .login {

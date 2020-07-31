@@ -1,5 +1,30 @@
 import axios from "axios"
 import qs from "qs"
+import store from "../store"
+import {warningAlert} from "./alert"
+import router from "../router"
+
+//请求拦截
+axios.interceptors.request.use(config => {
+    if (config.url != baseUrl + '/api/userlogin') {
+        config.headers.authorization = store.state.user.token;
+    }
+    return config
+})
+
+//响应拦截
+axios.interceptors.response.use(res => {
+    // console.group("本次路径：" + res.config.url)
+    // console.log(res)
+    // console.groupEnd()
+
+    if(res.data.msg==="登录已过期或访问权限受限"){
+        warningAlert("登录已过期或访问权限受限")
+        router.push("/login");
+        return;
+    }
+    return res;
+})
 axios.interceptors.response.use(res => {
     console.group("本次路径：" + res.config.url)
     console.log(res)
@@ -394,58 +419,35 @@ export const requestBannerDelete = params => {
 
 
 // -------------------------活动-----------------------------
-//活动添加
-export const requestSeckillAdd = (params) => {
-    // let formData=new FormData()
-    // for(let i in params){
-    //     formData.append(i,params[i])
-    // }
-    return axios({
-        url: baseUrl + "/api/seckadd",
-        method: "post",
-    params:params
-    })
-}
+//秒杀添加
+export const requestSeckillAdd = params => axios({
+    url: baseUrl + "/api/seckadd",
+    method: "post",
+    data: qs.stringify(params)
+})
 
+//秒杀列表
+export const requestSeckillList = () => axios({
+    url: baseUrl + "/api/secklist",
+})
 
-//活动列表
-export const requestSeckillList = (params) => {
-    return axios({
-        url: baseUrl + "/api/secklist",
-        method: "get",
-        params: params
-    })
-}
+//秒杀详情
+export const requestSeckillDetail = params => axios({
+    url: baseUrl + "/api/seckinfo",
+    params
+})
+//秒杀修改
+export const requestSeckillUpdate = params => axios({
+    url: baseUrl + "/api/seckedit",
+    method: "post",
+    data: qs.stringify(params)
+})
 
-//活动某一个条数据
-export const requestSeckillDetail = params => {
-    return axios({
-        url: baseUrl + "/api/seckinfo",
-        method: "get",
-        params
-    })
-}
-//活动修改
-export const requestSeckillUpdate = params => {
-    // let formData=new FormData()
-    // for(let i in params){
-    //     formData.append(i,params[i])
-    // }
-    return axios({
-        url: baseUrl + "/api/seckedit",
-        method: "post",
-        params:params
-    })
-}
-
-//活动删除
-export const requestSeckillDelete = params => {
-    return axios({
-        url: baseUrl + "/api/seckdelete",
-        method: "post",
-        data: qs.stringify(params)
-    })
-}
-
+//秒杀删除
+export const requestSeckillDelete = params => axios({
+    url: baseUrl + "/api/seckdelete",
+    data: qs.stringify(params),
+    method: "post"
+})
 
 
