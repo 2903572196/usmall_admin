@@ -4,6 +4,7 @@ import store from "../store"
 import {warningAlert} from "./alert"
 import router from "../router"
 
+
 //请求拦截
 axios.interceptors.request.use(config => {
     if (config.url != baseUrl + '/api/userlogin') {
@@ -31,7 +32,7 @@ axios.interceptors.response.use(res => {
     return res;
 })
 
-const baseUrl = "/api"
+const baseUrl = ""
 //菜单添加
 export const requestMenuAdd = (params) => {
     return axios({

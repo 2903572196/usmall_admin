@@ -2,7 +2,7 @@
   <div>
     <el-dialog :title="info.title" :visible.sync="info.show">
       <el-form :model="form" label-width="80px" >
-        <el-form-item label="活动名称" >
+        <el-form-item label="活动名称" id="txte">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
         <el-form-item label="活动期限">
@@ -143,6 +143,9 @@ export default {
     },
     //添加
     add() {
+      if(!this.form.title){
+        return warningAlert("活动名称不能为空")
+      }
       this.form.begintime=new Date(this.time[0]).getTime()
       this.form.endtime=new Date(this.time[1]).getTime()
       requestSeckillAdd(this.form).then(res => {
@@ -190,6 +193,7 @@ export default {
   this.requestCateList()
   }
 };
+
 </script>
 <style scoped>
 </style>

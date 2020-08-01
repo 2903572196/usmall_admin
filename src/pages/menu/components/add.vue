@@ -25,7 +25,7 @@
         </el-form-item>
         <el-form-item label="菜单地址" label-width="80px" v-else>
           <el-select v-model="form.url">
-            <el-option label="--请选择--" value disabled></el-option>
+            <el-option label="--请选择--" value disabled ></el-option>
             <el-option v-for="item in urls" :key="item" :label="item" :value="item"></el-option>
           </el-select>
         </el-form-item>
@@ -114,6 +114,9 @@ export default {
     },
     //点击了添加按钮
     add() {
+      if(!this.form.title){
+       return warningAlert("请填写菜单名称")
+      }
       requestMenuAdd(this.form).then((res) => {
         if (res.data.code == 200) {
           successAlert(res.data.msg);

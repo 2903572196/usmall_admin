@@ -96,6 +96,9 @@ export default {
     },
     //添加
     add() {
+      if(!this.form.title){
+        return warningAlert("标题不能为空")
+      }
       //发起添加请求
       requestBannerAdd(this.form).then((res) => {
         if (res.data.code == 200) {
@@ -133,6 +136,9 @@ export default {
     //点击修改按钮
      //点击了修改
     update() {
+       if(!this.form.title){
+        return warningAlert("标题不能为空")
+      }
       requestBannerUpdate(this.form).then((res) => {
         if (res.data.code == 200) {
           successAlert("修改成功");

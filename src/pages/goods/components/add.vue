@@ -28,7 +28,7 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="商品名称" label-width="80px">
+        <el-form-item label="商品名称" label-width="80px" id="txe">
           <el-input v-model="form.goodsname"></el-input>
         </el-form-item>
 
@@ -243,8 +243,14 @@ export default {
         this.empty();
       }
     },
-    //添加
+  //添加
     add() {
+     
+      if(!this.form.goodsname|| !this.form.price || !this.form.market_price){
+        return  warningAlert("商品名称、价格、市场价格均不能为空")
+      }
+
+      
           this.form.description=this.editor.txt.html()
           console.log(this.form.specsattr)
      this.form.specsattr=JSON.stringify(this.form.specsattr)
@@ -295,6 +301,11 @@ export default {
     //点击修改按钮
      //点击了修改
     update() {
+    
+      if (market_price="") {
+           warningAlert(res.data.msg)
+        
+      }
        this.form.description=this.editor.txt.html();
       this.form.specsattr=JSON.stringify(this.form.specsattr)
 

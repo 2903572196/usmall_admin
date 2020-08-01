@@ -95,6 +95,9 @@ export default {
       }
     },
     add() {
+      if(!this.form.username ||!this.form.password){
+       return warningAlert("请填写用户名或密码")
+      }
      
    //发起添加请求
       requestManageAdd(this.form).then((res) => {
@@ -125,7 +128,9 @@ export default {
     },
     //点击修改按钮
     update() {
-    
+    if(!this.form.username){
+       return warningAlert("请填写用户名")
+      }
 
       //成功之后看结果
    requestManageUpdate(this.form).then((res) => {

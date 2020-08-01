@@ -97,7 +97,9 @@ export default {
     },
     //点击修改按钮
     update() {
-    
+    if(!this.form.phone ||!this.form.nickname){
+  return  warningAlert("手机号及昵称均不能为空")
+    }
 
       //成功之后看结果
    requestMemberUpdate(this.form).then((res) => {

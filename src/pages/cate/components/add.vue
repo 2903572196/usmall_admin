@@ -148,6 +148,9 @@ export default {
     },
     //点击了添加按钮
     add() {
+      if(!this.form.catename){
+       return warningAlert("请填写分类名称")
+      }
       requestCateAdd(this.form).then((res) => {
         if (res.data.code == 200) {
           successAlert(res.data.msg);
@@ -172,6 +175,9 @@ export default {
     },
     //修改
     update() {
+        if(!this.form.catename){
+       return warningAlert("请填写分类名称")
+      }
       requestCateUpdate(this.form).then((res) => {
         if (res.data.code == 200) {
           successAlert(res.data.msg);

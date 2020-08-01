@@ -85,6 +85,9 @@ export default {
       }
     },
     add() {
+      if(!this.form.rolename){
+        return warningAlert("请选择角色名称")
+      }
       //获取tree的key赋值给form.menus
       this.form.menus = JSON.stringify(this.$refs.tree.getCheckedKeys());
       // console.log(this.form)
@@ -113,6 +116,9 @@ export default {
       });
     },
      update(){
+          if(!this.form.rolename){
+        return warningAlert("请选择角色名称")
+      }
             //获取tree的key赋值给form.menus
       this.form.menus = JSON.stringify(this.$refs.tree.getCheckedKeys());
       //成功之后看结果

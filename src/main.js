@@ -29,4 +29,4 @@ new Vue({
   template: '<App/>'
 })
 //图片前缀
-Vue.prototype.$imgPre="http://localhost:3000"
+Vue.prototype.$imgPre=""
